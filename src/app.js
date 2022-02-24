@@ -16,6 +16,10 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 
+app.get('/', (req, res) => {
+  res.send("Welcome to fidia test");
+})
+
 app.use(express.static(path.join(__dirname, 'static')));
 
 const stream = {

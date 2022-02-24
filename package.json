@@ -1,0 +1,49 @@
+{
+  "name": "fidia-graphql-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
+    "prettify": "prettier 'src/*'",
+    "prettify:fix": "prettier --write src/**",
+    "lint": "eslint . --ext .js --fix",
+    "test": "APP_ENV=test jest --detectOpenHandles --forceExit",
+    "prepare": "npx sync-dotenv",
+    "seed": "node ./src/providers/Seeder.js"
+  },
+  "dependencies": {
+    "apollo-boost": "^0.4.9",
+    "apollo-server-core": "^3.6.3",
+    "apollo-server-express": "^3.6.3",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "faker": "^5.5.3",
+    "fastest-validator": "^1.11.0",
+    "graphql": "^16.3.0",
+    "graphql-tools": "^8.2.0",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mail-template-sender": "^1.0.8",
+    "mailgun-js": "^0.22.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.2.3",
+    "nodemailer": "^6.7.2"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "jest": "^27.0.3",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.5.1",
+    "supertest": "^4.0.2",
+    "sync-dotenv": "^2.6.2"
+  },
+  "engines": {
+    "node": "14.x",
+    "yarn": "1.x"
+  }
+}

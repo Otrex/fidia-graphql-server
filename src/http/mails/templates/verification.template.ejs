@@ -1,0 +1,10 @@
+<div style="display: flex; flex-direction: row; width: 100%; justify-content: center; color: black; box-shadow: 0px 0px 3px rgba(100,100,100,.5);">
+  <div style="width: 500px; border-top: 3px solid chocolate; padding: 15px 10px; box-shadow: 0px 0px 3px rgba(100,100,100,.5);">
+    <h1 style="font-size: 30px; padding-bottom: 15px; margin-bottom:10px;">Hi <%= user.firstName %></h1>
+    <p>Thanks for trying out this backend app. I used NodeMailer because Mailgun required phone verification of which my phone was bad.</p>
+    <a style="display: block; padding: 10px; margin-top: 20px; background-color: chocolate; text-decoration: none; text-align: center; color: white;" href="<%= token %>"> Verify Your Account </a>
+    <p style="color: gray; font-size: 10px; padding: 3px;">
+      <pre><%= token %></pre>
+    </p>
+  </div>
+</div> 

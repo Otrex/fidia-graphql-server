@@ -22,8 +22,8 @@ const mails = {
 };
 
 mailer.onError((err, mail) => {
-  console.error("=>>",err)
-  console.log(mail)
+  console.error('=>>', err);
+  console.log(mail);
 });
 
 module.exports = {

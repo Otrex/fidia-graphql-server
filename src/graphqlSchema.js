@@ -8,21 +8,17 @@ const objectIdResolver = require('./http/lib/objectId.resolver');
 const { errorHandler } = require('./middlewares/error.handler');
 
 module.exports = {
-  typeDefs: [
-    types,
-    authScheme,
-    userScheme
-  ], 
-  resolvers: { 
-    Date: dateResolver, 
+  typeDefs: [types, authScheme, userScheme],
+  resolvers: {
+    Date: dateResolver,
     ObjectId: objectIdResolver,
     Query: {
       ...authResolvers.Query,
-      ...userResolvers.Query
+      ...userResolvers.Query,
     },
     Mutation: {
-      ...authResolvers.Mutation
-    }
+      ...authResolvers.Mutation,
+    },
   },
   context: ({ req }) => ({
     userId: req.session.userId,
@@ -30,5 +26,5 @@ module.exports = {
   }),
   introspection: true,
   playground: true,
-  formatError: errorHandler
+  formatError: errorHandler,
 };

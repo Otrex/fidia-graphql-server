@@ -1,6 +1,6 @@
 const config = require('../../config');
 const { APP_ENV } = require('../../constants');
-const uuid = require("uuid").v4
+const uuid = require('uuid').v4;
 const fs = require('fs');
 const { ServiceError } = require('../lib/exceptions');
 const ObjectId = require('mongoose').Types.ObjectId;
@@ -11,7 +11,7 @@ const {
   generateNumbers,
   bcryptCompare,
   generateToken,
-  generateJWT
+  generateJWT,
 } = require('../lib/utils');
 const { DateUpdate } = require('../../core/Utils');
 
@@ -31,20 +31,20 @@ class AuthService {
       { lastLoggedIn: new Date() }
     );
 
-    const tokenMessage = user.isVerified 
-      ? { 
+    const tokenMessage = user.isVerified
+      ? {
           token: generateJWT({ id: user._id }),
           message: 'login successful!!',
         }
-      : { 
-          token: generateJWT({ id: user._id }, 'verify'), 
-          message: 'user not verified' 
+      : {
+          token: generateJWT({ id: user._id }, 'verify'),
+          message: 'user not verified',
         };
 
-    return { 
-      user: await models.User.findById(user._id), 
+    return {
+      user: await models.User.findById(user._id),
       isVerified: user.isVerified,
-      ...tokenMessage 
+      ...tokenMessage,
     };
   };
 
@@ -67,15 +67,21 @@ class AuthService {
     };
     const user = await models.User.create(userData);
 
-    const token = generateJWT({ id: user._id }, 'email', config.email.verificationTTL);
+    const token = generateJWT(
+      { id: user._id },
+      'email',
+      config.email.verificationTTL
+    );
 
     if (config.app.env === APP_ENV.TEST) {
-      fs.writeFileSync(`${config.app.testPath}/email-token.txt`, token)
+      fs.writeFileSync(`${config.app.testPath}/email-token.txt`, token);
     } else {
       mails.verification.addTo(user.email);
       mails.verification.addData({
         user,
-        token: `${config.app.baseUrl}/?query={verifyEmail(token:"${token.trim()}") {message}}`
+        token: `${
+          config.app.baseUrl
+        }/?query={verifyEmail(token:"${token.trim()}") {message}}`,
       });
       mailer.send(mails.verification);
     }
@@ -113,15 +119,21 @@ class AuthService {
     }
 
     // TODO throttle resend emails
-    const token = generateJWT({ id: user._id }, 'email', config.email.verificationTTL);
+    const token = generateJWT(
+      { id: user._id },
+      'email',
+      config.email.verificationTTL
+    );
 
     if (config.app.env === APP_ENV.TEST) {
-      fs.writeFileSync(`${config.app.testPath}/email-token.txt`, token)
+      fs.writeFileSync(`${config.app.testPath}/email-token.txt`, token);
     } else {
       mails.verification.addTo(user.email);
       mails.verification.addData({
         user,
-        token: `${config.app.baseUrl}/?query={verifyEmail(token:"${token.trim()}") {message}}`
+        token: `${
+          config.app.baseUrl
+        }/?query={verifyEmail(token:"${token.trim()}") {message}}`,
       });
       mailer.send(mails.verification);
     }
@@ -129,7 +141,7 @@ class AuthService {
     return {
       message: 'proceed to verifying your account',
     };
-  }
+  };
 }
 
 module.exports = AuthService;

@@ -4,13 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./src/server.js",
-    "start": "node ./src/server.js",
+    "dev": "NODE_ENV=dev nodemon ./src/server.js",
+    "start": "NODE_ENV=prod node ./src/server.js",
     "prettify": "prettier 'src/*'",
     "prettify:fix": "prettier --write src/**",
     "lint": "eslint . --ext .js --fix",
     "test": "APP_ENV=test jest --detectOpenHandles --forceExit",
-    "prepare": "npx sync-dotenv",
+    "prepare": "echo hello",
     "seed": "node ./src/providers/Seeder.js"
   },
   "dependencies": {

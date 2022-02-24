@@ -5,10 +5,7 @@ const { PRODUCTION } = require('./constants');
 const config = require('./config');
 const helmet = require('helmet');
 const { dbUri } = require('./database');
-const {
-  errorHandler,
-  pageNotFound,
-} = require('./middlewares/error.handler');
+const { errorHandler, pageNotFound } = require('./middlewares/error.handler');
 
 const { deSerialize } = require('./middlewares/auth');
 

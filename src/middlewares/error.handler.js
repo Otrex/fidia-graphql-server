@@ -14,7 +14,7 @@ const errorHandler = (err) => {
   if (typeof err.message !== 'string') {
     err.message = JSON.stringify(err.message);
   }
-  return err
+  return err;
 };
 
 const pageNotFound = (req, res, next) => {

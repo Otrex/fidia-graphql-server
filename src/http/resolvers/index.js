@@ -1,6 +1,6 @@
 module.exports = ({ validator, middlewares, handler }) => {
   return async (parent, data, ctx) => {
-    let refined = {...data};
+    let refined = { ...data };
     try {
       if (validator) {
         refined = new validator().check(refined);
@@ -13,11 +13,7 @@ module.exports = ({ validator, middlewares, handler }) => {
         }
       }
       refined.user = ctx.user;
-      const result = await handler(
-        refined,
-        ctx,
-        parent,
-      );
+      const result = await handler(refined, ctx, parent);
       return result;
     } catch (err) {
       throw err;

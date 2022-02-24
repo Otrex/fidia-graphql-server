@@ -9,4 +9,4 @@ module.exports = new GraphQLScalarType({
   serialize(value) {
     return value.toString();
   },
-})
+});

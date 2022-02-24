@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   lastPasswordReset: {
     type: Date,
   },
-  
+
   password: {
     type: String,
     required: true,

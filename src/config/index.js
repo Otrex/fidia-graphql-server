@@ -11,7 +11,7 @@ module.exports = {
     path: '/graphql',
     testPath: path.join(__dirname, '..', '..', 'test'),
     bcryptRounds: 10,
-    baseUrl: process.env.APP_BASE_URL
+    baseUrl: process.env.APP_BASE_URL,
   },
   db: {
     name:
@@ -24,7 +24,7 @@ module.exports = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     uri: process.env.DB_URI,
-    authSource: "admin&readPreference=primary&ssl=false"
+    authSource: 'admin&readPreference=primary&ssl=false',
   },
   session: {
     ttl: +(process.env.SESSION_TTL || 1 * 24 * 60 * 60),
@@ -37,7 +37,7 @@ module.exports = {
       auth: {
         user: process.env.NODEMAILER_AUTH_USER,
         pass: process.env.NODEMAILER_AUTH_PASS,
-      }
+      },
     },
   },
 };

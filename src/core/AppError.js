@@ -1,4 +1,4 @@
-const { GraphQLError } = require("graphql");
+const { GraphQLError } = require('graphql');
 
 class AppError extends GraphQLError {
   constructor(message, statusCode, name) {

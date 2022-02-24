@@ -15,7 +15,7 @@ class RegisterValidator extends GenericValidator {
     password: { type: 'string', trim: true, min: 5 },
     firstName: { type: 'string', trim: true, min: 1 },
     lastName: { type: 'string', trim: true, min: 1 },
-    phoneNumber: { type: 'string', min: 9, max: 21 }
+    phoneNumber: { type: 'string', min: 9, max: 21 },
   };
 }
 
@@ -27,7 +27,6 @@ class VerifyEmailValidator extends GenericValidator {
 }
 
 class ResendVerificationEmailValidator extends VerifyEmailValidator {}
-
 
 module.exports = {
   LoginValidator,

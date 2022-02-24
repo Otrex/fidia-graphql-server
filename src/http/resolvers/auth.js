@@ -1,11 +1,11 @@
 const requestHandler = require('.');
 const AuthService = require('../services/auth.service');
-const {getVerificationUser} = require('../../middlewares/auth')
+const { getVerificationUser } = require('../../middlewares/auth');
 const {
   LoginValidator,
   RegisterValidator,
   VerifyEmailValidator,
-  ResendVerificationEmailValidator
+  ResendVerificationEmailValidator,
 } = require('../validators');
 
 module.exports = {
@@ -30,5 +30,5 @@ module.exports = {
       validator: RegisterValidator,
       handler: AuthService.register,
     }),
-  }
+  },
 };

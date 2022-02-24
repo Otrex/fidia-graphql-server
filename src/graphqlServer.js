@@ -2,18 +2,21 @@ const http = require('http');
 
 const app = require('./app');
 const { ApolloServer } = require('apollo-server-express');
-const { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageDisabled } = require('apollo-server-core');
+const {
+  ApolloServerPluginDrainHttpServer,
+  ApolloServerPluginLandingPageDisabled,
+} = require('apollo-server-core');
 
 const config = require('./config');
-const sdl = require('./graphqlSchema')
+const sdl = require('./graphqlSchema');
 
-module.exports = async (port) =>  {
+module.exports = async (port) => {
   const httpServer = http.createServer(app);
   const server = new ApolloServer({
     ...sdl,
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
-      ApolloServerPluginLandingPageDisabled()
+      ApolloServerPluginLandingPageDisabled(),
     ],
   });
 
@@ -25,6 +28,6 @@ module.exports = async (port) =>  {
 
   const url = `http://localhost:${port}${server.graphqlPath}`;
   console.log(`🚀 Server ready at ${url}`);
-  
+
   return { server, app, httpServer, url };
-}
+};
